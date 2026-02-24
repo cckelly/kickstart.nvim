@@ -10,6 +10,7 @@ return {
   opts = {
     flavour = 'mocha',
     no_italic = true,
+    transparent_background = true,
   },
   config = function(_, opts)
     require('catppuccin').setup(opts)
