@@ -1,26 +1,11 @@
--- NOTE: Plugins can specify dependencies.
---
--- The dependencies are proper plugin specifications as well - anything
--- you do for a plugin at the top level, you can do for a dependency.
---
--- Use the `dependencies` key to specify the dependencies of a particular plugin
-
-return { -- Fuzzy Finder (files, lsp, etc)
+return {
+  -- Fuzzy Finder (files, lsp, etc)
   'nvim-telescope/telescope.nvim',
-  -- By default, Telescope is included and acts as your picker for everything.
-
-  -- If you would like to switch to a different picker (like snacks, or fzf-lua)
-  -- you can disable the Telescope plugin by setting enabled to false and enable
-  -- your replacement picker by requiring it explicitly (e.g. 'custom.plugins.snacks')
-
-  -- Note: If you customize your config for yourself,
-  -- it's best to remove the Telescope plugin config entirely
-  -- instead of just disabling it here, to keep your config clean.
   enabled = true,
   event = 'VimEnter',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    { -- If encountering errors, see telescope-fzf-native README for installation instructions
+    {
       'nvim-telescope/telescope-fzf-native.nvim',
 
       -- `build` is used to run some command when the plugin is installed/updated.
@@ -32,22 +17,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
       cond = function() return vim.fn.executable 'make' == 1 end,
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
-
-    -- Useful for getting pretty icons, but requires a Nerd Font.
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
   config = function()
-    -- Telescope is a fuzzy finder that comes with a lot of different things that
-    -- it can fuzzy find! It's more than just a "file finder", it can search
-    -- many different aspects of Neovim, your workspace, LSP, and more!
-    --
-    -- The easiest way to use Telescope, is to start by doing something like:
-    --  :Telescope help_tags
-    --
-    -- After running this command, a window will open up and you're able to
-    -- type in the prompt window. You'll see a list of `help_tags` options and
-    -- a corresponding preview of the help.
-    --
     -- Two important keymaps to use while in Telescope are:
     --  - Insert mode: <c-/>
     --  - Normal mode: ?
@@ -91,8 +63,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-    -- This runs on LSP attach per buffer (see main LSP attach function in 'neovim/nvim-lspconfig' config for more info,
-    -- it is better explained there). This allows easily switching between pickers if you prefer using something else!
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('telescope-lsp-attach', { clear = true }),
       callback = function(event)
@@ -116,7 +86,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
         -- Fuzzy find all the symbols in your current workspace.
         -- Similar to document symbols, except searches over your entire project.
-        vim.keymap.set('n', 'gW', builtin.lsp_dynamic_workspace_symbols, { buffer = buf, desc = 'Open Workspace Symbols' })
+        vim.keymap.set(
+          'n',
+          'gW',
+          builtin.lsp_dynamic_workspace_symbols,
+          { buffer = buf, desc = 'Open Workspace Symbols' }
+        )
 
         -- Jump to the type of the word under your cursor.
         -- Useful when you're not sure what type a variable is and you want to see
@@ -149,6 +124,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
     )
 
     -- Shortcut for searching your Neovim configuration files
-    vim.keymap.set('n', '<leader>sn', function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
+    vim.keymap.set(
+      'n',
+      '<leader>sn',
+      function() builtin.find_files { cwd = vim.fn.stdpath 'config' } end,
+      { desc = '[S]earch [N]eovim files' }
+    )
   end,
 }
