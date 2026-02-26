@@ -89,7 +89,7 @@ return {
       -- clangd = {},
       -- gopls = {},
       pyright = {},
-      -- rust_analyzer = {},
+      rust_analyzer = {},
       --
       -- Some languages (like typescript) have entire language plugins that can be useful:
       --    https://github.com/pmizio/typescript-tools.nvim
@@ -114,6 +114,7 @@ return {
       'pyright', -- Python LSP
       'ruff', -- Python linter + formatter
       'selene', -- Lua linter
+      'rust-analyzer', -- Rust LSP
     }
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
