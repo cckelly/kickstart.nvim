@@ -88,7 +88,7 @@ return {
     local servers = {
       -- clangd = {},
       -- gopls = {},
-      -- pyright = {},
+      pyright = {},
       -- rust_analyzer = {},
       --
       -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -111,6 +111,9 @@ return {
       'stylua', -- Used to format Lua code
       'prettierd', -- Prettier daemon for formatting
       'eslint_d', -- ESLint daemon for linting
+      'pyright', -- Python LSP
+      'ruff', -- Python linter + formatter
+      'selene', -- Lua linter
     }
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
