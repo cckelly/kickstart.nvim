@@ -87,6 +87,7 @@ return {
     --  See `:help lsp-config` for information about keys and how to configure
     local servers = {
       clangd = {},
+      omnisharp = {},
       -- gopls = {},
       pyright = {},
       rust_analyzer = {},
@@ -117,6 +118,8 @@ return {
       'rust-analyzer', -- Rust LSP
       'clangd', -- C/C++ LSP
       'clang-format', -- C/C++ formatter
+      'omnisharp', -- C# LSP
+      'csharpier', -- C# formatter
     }
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
