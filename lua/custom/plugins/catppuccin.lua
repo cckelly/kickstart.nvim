@@ -11,6 +11,9 @@ return {
     flavour = 'mocha',
     no_italic = true,
     transparent_background = true,
+    integrations = {
+      bufferline = true,
+    },
   },
   config = function(_, opts)
     require('catppuccin').setup(opts)
