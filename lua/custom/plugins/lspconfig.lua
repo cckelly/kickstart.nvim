@@ -86,7 +86,7 @@ return {
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
     --  See `:help lsp-config` for information about keys and how to configure
     local servers = {
-      -- clangd = {},
+      clangd = {},
       -- gopls = {},
       pyright = {},
       rust_analyzer = {},
@@ -115,6 +115,8 @@ return {
       'ruff', -- Python linter + formatter
       'selene', -- Lua linter
       'rust-analyzer', -- Rust LSP
+      'clangd', -- C/C++ LSP
+      'clang-format', -- C/C++ formatter
     }
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }

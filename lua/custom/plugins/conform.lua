@@ -20,6 +20,8 @@ return {
       }
     end,
     formatters_by_ft = {
+      c = { 'clang-format' },
+      cpp = { 'clang-format' },
       lua = { 'stylua' },
       python = { 'ruff_fix', 'ruff_format' },
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
