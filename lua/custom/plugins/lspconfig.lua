@@ -109,7 +109,8 @@ return {
       'typescript-language-server', -- TypeScript/JavaScript LSP
       'lua-language-server', -- Lua Language server
       'stylua', -- Used to format Lua code
-      -- You can add other tools here that you want Mason to install
+      'prettierd', -- Prettier daemon for formatting
+      'eslint_d', -- ESLint daemon for linting
     }
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
