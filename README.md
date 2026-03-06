@@ -1,5 +1,7 @@
 # kickstart.nvim
 
+My Neovim config is now being maintained with my other [dotfiles](https://github.com/cckelly/dotfiles) repo. This repository is no longer maintained.
+
 ## Introduction
 
 A starting point for Neovim that is:
